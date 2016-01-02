@@ -1,0 +1,12 @@
+.data-list li {
+  width: 100%;
+}
+
+.data-item li {
+  margin-right: 15px;
+  max-width: 30px;
+}
+
+.data-item li:first-of-type {
+  max-width: 70px;
+}

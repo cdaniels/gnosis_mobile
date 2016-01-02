@@ -1,0 +1,32 @@
+<a class="secondary button float-center" (click)="toggleCreate()" *ngIf="state === 'default'">
+  Create A New Event
+</a>
+<a class="secondary button float-center" (click)="resetDefault()" *ngIf="state !== 'default'">
+  Close
+</a>
+<div [ngSwitch]='state'>
+  <event-form action="update" [selected-event]="eventTemplate" (submission)="reloadEvents()" *ngSwitchWhen="'editing'"></event-form>
+  <event-form action="create" [selected-event]="eventTemplate" (submission)="reloadEvents()" *ngSwitchWhen="'creating'"></event-form>
+</div>
+<ul class="callout secondary data-list" (init)="eventService.loadEvents()">
+  <li *ngFor="#event of eventService.events">
+    <ul class="clearfix data-item">
+      <li class="float-left">
+        <button class="data-name" (click)="show(event.id)">
+          {{event.name}}
+        </button>
+      </li>
+      <li class="float-right">
+        <button (click)="toggleEdit(event)">
+          <i class="fa fa-pencil fa-2x"></i>
+        </button>
+      </li>
+      <li class="float-right">
+        <button (click)="delete(event.id)">
+          <i class="fa fa-trash fa-2x"></i>
+        </button>
+      </li>
+    </ul>
+  </li>
+</ul>
+

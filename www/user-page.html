@@ -1,0 +1,28 @@
+<div class="large callout">
+  <div class="alert callout medium-12 columns" data-closable *ngIf="message">
+    {{message}}
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <button class="large expanded warning button" (click)="toggleEdit()" *ngIf="state == 'editing'">
+    Cancel
+  </button>
+  <section [ngSwitch]='state'>
+    <table class="hover stack" *ngSwitchWhen="'default'">
+      <caption>User Profile</caption>
+      <tbody>
+        <tr *ngFor="#key of profileKeys">
+          <td><b>{{key}}:</b></td> 
+          <td>{{profile[key]}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <user-form action="update" [selected-user]="user" (submission)="updateUser()" *ngSwitchWhen="'editing'"></user-form>
+  </section>
+  <button class="large expanded warning button" (click)="toggleEdit()" *ngIf="state == 'default'">
+    Edit
+  </button>
+
+</div>

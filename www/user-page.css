@@ -1,0 +1,8 @@
+.large.callout {
+  overflow: scroll;  
+  height: 100%;
+}
+
+section button:first-of-type {
+  margin-top: 40px;
+}

@@ -1,0 +1,32 @@
+<a class="secondary button float-center" (click)="toggleCreate()" *ngIf="state == 'default'">
+  Create A New User
+</a>
+<a class="secondary button float-center" (click)="resetDefault()" *ngIf="state !== 'default'">
+  Close
+</a>
+<div [ngSwitch]='state'>
+  <user-form action="update" [selected-user]="userTemplate" (submission)="reloadUsers()" *ngSwitchWhen="'editing'"></user-form>
+  <user-form action="create" [selected-user]="userTemplate" (submission)="reloadUsers()" *ngSwitchWhen="'creating'"></user-form>
+</div>
+<ul class="callout secondary data-list" (init)="userService.loadUsers()">
+  <li *ngFor="#user of userService.users">
+    <ul class="clearfix data-item">
+      <li class="float-left">
+        <button class="data-name" (click)="show(user.id)">
+          {{user.username}}
+        </button>
+      </li>
+      <li class="float-right">
+        <button (click)="toggleEdit(user)">
+          <i class="fa fa-pencil fa-2x"></i>
+        </button>
+      </li>
+      <li class="float-right">
+        <button (click)="delete(user.id)">
+          <i class="fa fa-trash fa-2x"></i>
+        </button>
+      </li>
+    </ul>
+  </li>
+</ul>
+

@@ -1,0 +1,37 @@
+  <form role="form" method="post" [ngFormModel]="registrationForm" (ngSubmit)="submit(registrationForm.value)">
+    <fieldset class="fieldset">
+      <legend *ngIf="action == 'create'">New User Form</legend>
+      <legend *ngIf="action == 'update'">User Edit Form</legend>
+
+      <div class="input-group">
+        <label class="input-group-label">Username</label>
+        <input class="input-group-field" type="text" name="username" [(ngModel)]="item.username" ngControl="username" minlength="5" maxlength="20" required/>
+      </div>
+      <div class="input-group">          
+        <label class="input-group-label">Email</label>
+        <input class="input-group-field" type="email" name="email" [(ngModel)]="item.email" ngControl="email"  pattern="^[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,125}[a-zA-Z]{2,63}$" required/>
+      </div>
+      
+      <fieldset ngControlGroup="matchingPassword">
+        <div class="alert label text-center float-center" *ngIf="!registrationForm.controls['matchingPassword'].valid">
+          Passwords Must Match
+        </div>
+        <div class="input-group">          
+          <label class="input-group-label">Password</label>
+          <input class="input-group-field" type="password" name="password" [(ngModel)]="item.password" ngControl="password" required/>
+        </div>
+        <div class="input-group">          
+          <label class="input-group-label">Confirm</label>
+          <input class="input-group-field" type="password" name="confirmfirmation" ngControl="confirmation" required/>
+        </div>
+      </fieldset>
+      <button class="success large expanded button float-center" type="submit">
+        {{action | uppercase}} USER
+      </button>
+    </fieldset>
+  </form>
+  <!--TODO this is for debugging and should be removed afterwards -->
+  <!--<p>Valid?: {{registrationForm.valid}}</p>
+  <p>MatchingPassword?: {{registrationForm.controls['matchingPassword'].valid}}</p>
+  <pre>{{registrationForm.value | json}}</pre>-->
+

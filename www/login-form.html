@@ -1,0 +1,25 @@
+<div class="alert callout" data-closable *ngIf="message">
+  {{message}}
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form role="form" method="post" #f="ngForm" (ngSubmit)="submit()">
+  <fieldset class="fieldset">
+    <div ngControlGroup="login">
+      <div class="input-group">
+        <label class="input-group-label">Username</label>
+        <input class="input-group-field" type="text" name="username" [(ngModel)]="item.username" ngControl="username" required/>
+      </div>
+      <div class="input-group">
+        <label class="input-group-label">Password</label>
+        <input class="input-group-field" type="password" name="password" [(ngModel)]="item.password" ngControl="password" required/>
+      </div>
+    </div>
+    <button class="large expanded success button float-center" type="submit">
+      Login
+    </button>
+
+  </fieldset>
+</form>
+

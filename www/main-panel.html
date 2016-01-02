@@ -1,0 +1,13 @@
+<main>
+  <router-outlet></router-outlet>
+</main>
+<aside class="show-for-medium" id="side-panel" [ngClass]="{hide: isActive(['Login'])}">
+  <side-panel></side-panel>
+</aside>
+
+<div id="bottom-panel" [ngClass]="{hide: isActive(['Login'])}">
+  <article class="show-for-small-only">
+    <!--TODO re-enable when auxilarry routing is fixed -->
+    <!--<side-panel></side-panel>-->
+  </article>
+</div>

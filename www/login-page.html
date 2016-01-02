@@ -1,0 +1,21 @@
+<div class="large primary callout" id="login-panel">
+  <img class="float-center" src="./img/logo/eye_logo1.png" alt="Eye Logo" *ngIf="state == 'default'"> 
+  <a class="warning button float-center" (click)="toggle('default')" *ngIf="state !== 'default'">
+    Cancel
+  </a>
+
+  <section [ngSwitch]='state' animate-slide #formSlide="animateSlide">
+    <login-form *ngSwitchWhen="'login'"></login-form>
+    <user-form action="create" *ngSwitchWhen="'registration'"></user-form>
+  </section>
+
+  <a class="button float-center" (click)="toggle('login')" *ngIf="state === 'default'">
+    Login
+  </a>
+  <a class="button float-center" (click)="toggle('registration')" *ngIf="state === 'default'">
+    Register
+  </a>
+
+</div>
+
+

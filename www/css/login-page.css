@@ -1,0 +1,18 @@
+#login-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+#login-panel img{
+  width: 55vw;
+}
+
+#login-panel section {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
